@@ -5,15 +5,15 @@ public class Rotator : MonoBehaviour
     private int _minAngle = 200;
     private int _maxAngle = 330;
 
-    private int rotation;
+    private int _rotationSpeed;
 
     private void Awake()
     {
-        rotation = Random.Range(_minAngle, _maxAngle);
+        _rotationSpeed = Random.Range(_minAngle, _maxAngle);
     }
 
     private void Update()
     {
-        transform.Rotate(Vector3.up, rotation * Time.deltaTime);
+        transform.Rotate(Vector3.up, _rotationSpeed * Time.deltaTime);
     }
 }

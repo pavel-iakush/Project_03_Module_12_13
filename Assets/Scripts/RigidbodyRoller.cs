@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RigidbodyRoller : MonoBehaviour
@@ -35,19 +33,24 @@ public class RigidbodyRoller : MonoBehaviour
     private void FixedUpdate()
     {
         if (Mathf.Abs(_xInput) > _deadZone)
-        {
-            _rigidbody.AddForce(Vector3.right * _moveForce * _xInput, ForceMode.Force);
-        }
+            MoveLeftRight();
 
         if (Mathf.Abs(_zInput) > _deadZone)
-        {
-            _rigidbody.AddForce(Vector3.forward * _moveForce * _zInput, ForceMode.Force);
-        }
+            MoveForwardBackward();
 
         if (_isJumping == true)
-        {
-            _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-            _isJumping = false;
-        }
+            Jump();
+    }
+
+    private void MoveLeftRight()
+        => _rigidbody.AddForce(Vector3.right * _moveForce * _xInput, ForceMode.Force);
+
+    private void MoveForwardBackward()
+        => _rigidbody.AddForce(Vector3.forward * _moveForce * _zInput, ForceMode.Force);
+
+    private void Jump()
+    {
+        _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        _isJumping = false;
     }
 }
