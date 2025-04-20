@@ -13,6 +13,7 @@ public class RigidbodyRoller : MonoBehaviour
     private float _zInput;
     private float _deadZone = 0.05f;
     private bool _isJumping = false;
+    private bool _allowJump = true;
 
     private void Awake()
     {
@@ -24,9 +25,10 @@ public class RigidbodyRoller : MonoBehaviour
         _xInput = Input.GetAxisRaw(_horizontalAxis);
         _zInput = Input.GetAxisRaw(_verticalAxis);
 
-        if (_isJumping == false && Input.GetKeyDown(_jumpButton))
+        if (_isJumping == false && _allowJump == true && Input.GetKeyDown(_jumpButton))
         {
             _isJumping = true;
+            _allowJump = false;
         }
     }
 
@@ -42,6 +44,12 @@ public class RigidbodyRoller : MonoBehaviour
             Jump();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.GetComponent<BoxCollider>())
+            _allowJump = true;
+    }
+
     private void MoveLeftRight()
         => _rigidbody.AddForce(Vector3.right * _moveForce * _xInput, ForceMode.Force);
 
@@ -52,5 +60,6 @@ public class RigidbodyRoller : MonoBehaviour
     {
         _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _isJumping = false;
+        _allowJump = false;
     }
 }
