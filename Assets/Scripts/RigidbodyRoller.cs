@@ -7,10 +7,12 @@ public class RigidbodyRoller : MonoBehaviour
     private KeyCode _jumpButton = KeyCode.Space;
 
     private Rigidbody _rigidbody;
-    [SerializeField] private float _moveForce;
-    [SerializeField] private float _jumpForce;
     private float _xInput;
     private float _zInput;
+
+    [SerializeField] private float _moveForce;
+    [SerializeField] private float _jumpForce;
+
     private float _deadZone = 0.05f;
     private bool _isJumping = false;
     private bool _isGrounded = true;

@@ -3,6 +3,7 @@ using UnityEngine;
 public class CollectCoinsAtTime : MonoBehaviour
 {
     [SerializeField] private float _countdown;
+
     private int _collectedCoins = 0;
     private int _coinsToVictory = 10;
 
@@ -11,13 +12,13 @@ public class CollectCoinsAtTime : MonoBehaviour
         _countdown -= Time.deltaTime;
         PrintCountdownTimer();
 
-        if (_collectedCoins == _coinsToVictory)
+        if (WinCondition())
         {
             VictoryMessage();
             PauseGame();
         }
 
-        if (_countdown <= 0)
+        if (FailCondition())
         {
             FailMessage();
             PauseGame();
@@ -40,4 +41,10 @@ public class CollectCoinsAtTime : MonoBehaviour
 
     private void PrintCountdownTimer()
         => Debug.Log($"Timeleft: {_countdown}");
+
+    private bool WinCondition()
+        => _collectedCoins == _coinsToVictory;
+
+    private bool FailCondition()
+        => _countdown <= 0;
 }
