@@ -13,7 +13,7 @@ public class RigidbodyRoller : MonoBehaviour
     private float _zInput;
     private float _deadZone = 0.05f;
     private bool _isJumping = false;
-    private bool _allowJump = true;
+    private bool _isGrounded = true;
 
     private void Awake()
     {
@@ -25,29 +25,29 @@ public class RigidbodyRoller : MonoBehaviour
         _xInput = Input.GetAxisRaw(_horizontalAxis);
         _zInput = Input.GetAxisRaw(_verticalAxis);
 
-        if (_isJumping == false && _allowJump == true && Input.GetKeyDown(_jumpButton))
+        if (IsJumpAllowed())
         {
             _isJumping = true;
-            _allowJump = false;
+            _isGrounded = false;
         }
     }
 
     private void FixedUpdate()
     {
-        if (Mathf.Abs(_xInput) > _deadZone)
+        if (HasHorizontalInput())
             MoveLeftRight();
 
-        if (Mathf.Abs(_zInput) > _deadZone)
+        if (HasVerticalInput())
             MoveForwardBackward();
 
-        if (_isJumping == true)
+        if (CanJump())
             Jump();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.GetComponent<BoxCollider>())
-            _allowJump = true;
+            _isGrounded = true;
     }
 
     private void MoveLeftRight()
@@ -60,6 +60,18 @@ public class RigidbodyRoller : MonoBehaviour
     {
         _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _isJumping = false;
-        _allowJump = false;
+        _isGrounded = false;
     }
+
+    private bool HasHorizontalInput()
+        => Mathf.Abs(_xInput) > _deadZone;
+
+    private bool HasVerticalInput()
+        => Mathf.Abs(_zInput) > _deadZone;
+
+    private bool CanJump()
+        => _isJumping == true;
+
+    private bool IsJumpAllowed()
+        => _isJumping == false && _isGrounded == true && Input.GetKeyDown(_jumpButton);
 }
