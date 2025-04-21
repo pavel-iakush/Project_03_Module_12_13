@@ -48,7 +48,7 @@ public class RigidbodyRoller : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.GetComponent<BoxCollider>())
+        if (IsTouchingGround(collision))
             _isGrounded = true;
     }
 
@@ -76,4 +76,7 @@ public class RigidbodyRoller : MonoBehaviour
 
     private bool IsJumpAllowed()
         => _isJumping == false && _isGrounded == true && Input.GetKeyDown(_jumpButton);
+
+    private bool IsTouchingGround(Collision collision)
+        => collision.collider.GetComponent<BoxCollider>() || collision.collider.GetComponent<MeshCollider>();
 }
