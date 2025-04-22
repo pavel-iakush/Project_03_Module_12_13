@@ -254,7 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171d29fc45dba345b2043dd490cfaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameRules: {fileID: 2035295413}
 --- !u!1 &177312624
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171d29fc45dba345b2043dd490cfaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameRules: {fileID: 2035295413}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,7 +1218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171d29fc45dba345b2043dd490cfaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameRules: {fileID: 2035295413}
 --- !u!1 &818447527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -466329591000292508, guid: ca9f167690d15d44e86d661ea1252cd2,
@@ -1257,6 +1254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 883438241}
+  - component: {fileID: 883438242}
   m_Layer: 0
   m_Name: player_grp
   m_TagString: Untagged
@@ -1280,6 +1278,18 @@ Transform:
   - {fileID: 1692031129}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &883438242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883438240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c856bb5d156d5740974d33121830a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &901057655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,7 +1421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171d29fc45dba345b2043dd490cfaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameRules: {fileID: 2035295413}
 --- !u!1 &929099928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,7 +1593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171d29fc45dba345b2043dd490cfaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameRules: {fileID: 2035295413}
 --- !u!1 &1102988395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,6 +1949,7 @@ GameObject:
   - component: {fileID: 1692031131}
   - component: {fileID: 1692031130}
   - component: {fileID: 1692031134}
+  - component: {fileID: 1692031135}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -2075,6 +2084,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveForce: 5
   _jumpForce: 6
+--- !u!114 &1692031135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692031128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b8054dfbe963b45bbe21c42bc387c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wallet: {fileID: 883438242}
 --- !u!1 &1734668624
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,7 +2649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171d29fc45dba345b2043dd490cfaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameRules: {fileID: 2035295413}
 --- !u!1 &1869492327
 GameObject:
   m_ObjectHideFlags: 0
@@ -2759,7 +2780,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171d29fc45dba345b2043dd490cfaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameRules: {fileID: 2035295413}
 --- !u!1 &1907807769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,7 +3016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171d29fc45dba345b2043dd490cfaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameRules: {fileID: 2035295413}
 --- !u!1 &1952809620
 GameObject:
   m_ObjectHideFlags: 0
@@ -3234,7 +3253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171d29fc45dba345b2043dd490cfaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameRules: {fileID: 2035295413}
 --- !u!1 &2030842226
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,7 +3384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171d29fc45dba345b2043dd490cfaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameRules: {fileID: 2035295413}
 --- !u!1 &2035295411
 GameObject:
   m_ObjectHideFlags: 0
@@ -3424,6 +3441,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countdown: 60
+  _wallet: {fileID: 883438242}
+  _coinsArray:
+  - {fileID: 1852362502}
+  - {fileID: 266529593}
+  - {fileID: 1987569435}
+  - {fileID: 1869492327}
+  - {fileID: 1915051232}
+  - {fileID: 756454107}
+  - {fileID: 901057655}
+  - {fileID: 98682979}
+  - {fileID: 1062039651}
+  - {fileID: 2030842226}
 --- !u!1 &2086066475
 GameObject:
   m_ObjectHideFlags: 0

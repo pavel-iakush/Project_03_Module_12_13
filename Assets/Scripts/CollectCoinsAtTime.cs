@@ -4,30 +4,32 @@ public class CollectCoinsAtTime : MonoBehaviour
 {
     [SerializeField] private float _countdown;
 
-    private int _collectedCoins = 0;
-    private int _coinsToVictory = 10;
+    [SerializeField] private Wallet _wallet;
+    [SerializeField] private GameObject[] _coinsArray;
+
+    private int _coinsToVictory;
+
+    private void Awake()
+    {
+        _coinsToVictory = _coinsArray.Length;
+    }
 
     private void Update()
     {
         _countdown -= Time.deltaTime;
         PrintCountdownTimer();
 
-        if (WinCondition())
+        if (WinConditionComplete())
         {
             VictoryMessage();
             PauseGame();
         }
 
-        if (FailCondition())
+        if (FailConditionComplete())
         {
             FailMessage();
             PauseGame();
         }
-    }
-
-    public void AddCoinCounter()
-    {
-        _collectedCoins += 1;
     }
 
     private void PauseGame()
@@ -42,9 +44,9 @@ public class CollectCoinsAtTime : MonoBehaviour
     private void PrintCountdownTimer()
         => Debug.Log($"Timeleft: {_countdown}");
 
-    private bool WinCondition()
-        => _collectedCoins == _coinsToVictory;
+    private bool WinConditionComplete()
+        => _wallet.CollectedCoins == _coinsToVictory;
 
-    private bool FailCondition()
+    private bool FailConditionComplete()
         => _countdown <= 0;
 }
