@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     private Vector3 _velocity = Vector3.zero;
     private float _smoothTime = 0.2f;
 
-    void Update()
+    void LateUpdate()
     {
         FollowPlayer();
     }
