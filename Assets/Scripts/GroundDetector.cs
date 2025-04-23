@@ -4,21 +4,20 @@ public class GroundDetector : MonoBehaviour
 {
     private bool _isGrounded = true;
 
-    public bool IsGrounded
-    {
-        get
-        {
-            return _isGrounded;
-        }
-        set
-        {
-            _isGrounded = value;
-        }
-    }
+    public bool IsGrounded => _isGrounded;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.GetComponent<BoxCollider>() || collision.collider.GetComponent<MeshCollider>())
+        if (IsTouchingGround(collision))
             _isGrounded = true;
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (IsTouchingGround(collision))
+            _isGrounded = false;
+    }
+
+    private bool IsTouchingGround(Collision collision)
+        => collision.collider.GetComponent<BoxCollider>() || collision.collider.GetComponent<MeshCollider>();
 }

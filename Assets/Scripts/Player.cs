@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private float _xInput;
     private float _zInput;
     private float _deadZone = 0.05f;
+    private bool _isJumpKeyPressed;
 
     [SerializeField] private float _moveForce;
     [SerializeField] private float _jumpForce;
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
 
         if (IsJumpRequestApproved())
         {
-            ValidateJump();
+            _isJumpKeyPressed = true;
         }
     }
 
@@ -42,10 +43,11 @@ public class Player : MonoBehaviour
         if (HasVerticalInput())
             _rigidbodyMove.ProcessMoveForwardBackward(_rigidbody, _moveForce, _zInput);
 
-        if (HasJumpPermission())
+        if (_isJumpKeyPressed)
         {
             _rigidbodyJump.ProcessJump(_rigidbody, _jumpForce);
-        }
+            _isJumpKeyPressed = false;
+        } 
     }
 
     private bool HasHorizontalInput()
@@ -54,15 +56,6 @@ public class Player : MonoBehaviour
     private bool HasVerticalInput()
         => Mathf.Abs(_zInput) > _deadZone;
 
-    private bool HasJumpPermission()
-        => _rigidbodyJump.IsJumping == true;
-
-    private void ValidateJump()
-    {
-        _rigidbodyJump.IsJumping = true;
-        _groundDetector.IsGrounded = false;
-    }
-
     private bool IsJumpRequestApproved()
-        => _rigidbodyJump.IsJumping == false && _groundDetector.IsGrounded == true && Input.GetKeyDown(_jumpButton);
+        => _groundDetector.IsGrounded == true && Input.GetKeyDown(_jumpButton);
 }
